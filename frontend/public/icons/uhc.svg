@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs>
+    <radialGradient id="hg" cx="40%" cy="35%">
+      <stop offset="0%" stop-color="#FF6080"/>
+      <stop offset="60%" stop-color="#E8364F"/>
+      <stop offset="100%" stop-color="#B01030"/>
+    </radialGradient>
+  </defs>
+  <!-- Heart shape -->
+  <path d="M32,54 C32,54 6,38 6,22 C6,12 14,6 22,6 C26.5,6 29.5,8 32,13 C34.5,8 37.5,6 42,6 C50,6 58,12 58,22 C58,38 32,54 32,54Z" fill="url(#hg)"/>
+  <!-- Top highlight -->
+  <path d="M22,10 C16,10 10,15 10,22 C10,28 16,34 22,38" fill="#FF8098" opacity="0.4"/>
+  <!-- Glossy highlight -->
+  <ellipse cx="22" cy="18" rx="7" ry="5" fill="#FF90A0" opacity="0.5" transform="rotate(-20 22 18)"/>
+</svg>

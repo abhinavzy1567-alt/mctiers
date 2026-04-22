@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs>
+    <radialGradient id="gg" cx="40%" cy="30%">
+      <stop offset="0%" stop-color="#60B8F0"/>
+      <stop offset="100%" stop-color="#1565C0"/>
+    </radialGradient>
+  </defs>
+  <!-- Ocean -->
+  <circle cx="32" cy="32" r="26" fill="url(#gg)"/>
+  <!-- Continents -->
+  <path d="M20,18 C22,16 26,15 28,17 C30,19 28,22 26,24 C24,26 20,28 18,26 C16,24 18,20 20,18Z" fill="#4CAF50"/>
+  <path d="M30,14 C34,12 40,14 42,18 C44,22 42,26 38,28 C34,30 30,28 28,24 C26,20 28,16 30,14Z" fill="#4CAF50"/>
+  <path d="M14,30 C16,28 20,30 22,34 C24,38 22,42 18,44 C14,46 12,42 12,38 C12,34 12,32 14,30Z" fill="#4CAF50"/>
+  <path d="M28,32 C32,30 38,32 42,36 C46,40 46,46 42,48 C38,50 32,48 28,44 C24,40 24,34 28,32Z" fill="#4CAF50"/>
+  <path d="M44,20 C46,18 50,20 50,24 C50,28 48,30 46,28 C44,26 42,22 44,20Z" fill="#4CAF50"/>
+  <!-- Atmosphere highlight -->
+  <ellipse cx="24" cy="20" rx="10" ry="6" fill="white" opacity="0.15" transform="rotate(-20 24 20)"/>
+</svg>

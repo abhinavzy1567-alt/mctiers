@@ -1,0 +1,155 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&display=swap');
+
+/* ─── AGGRESSIVE PVP THEME ─── */
+:root {
+  --bg-main: #080408;
+  --bg-navbar: #0a0509;
+  --bg-panel: #10080e;
+  --bg-row-dark: #110a10;
+  --bg-row-light: #160e15;
+  --border-light: rgba(255, 40, 40, 0.08);
+  --border-glow: rgba(220, 38, 38, 0.15);
+
+  --text-primary: #f8f0f0;
+  --text-secondary: #8b6b6b;
+  --text-dim: #5c3f3f;
+
+  --accent-gold: #fbbf24;
+  --accent-silver: #cbd5e1;
+  --accent-bronze: #cd7f32;
+
+  /* Aggressive reds */
+  --red-hot: #ef4444;
+  --red-deep: #dc2626;
+  --red-blood: #991b1b;
+  --red-ember: #f97316;
+  --crimson: #be123c;
+  --magenta-fire: #e11d48;
+
+  --btn-bg: rgba(220, 38, 38, 0.08);
+  --btn-hover: rgba(220, 38, 38, 0.18);
+
+  font-family: 'Inter', system-ui, sans-serif;
+  color-scheme: dark;
+  color: var(--text-primary);
+  background-color: var(--bg-main);
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ─── GLOBAL ANIMATIONS ─── */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(18px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes slideInLeft {
+  from { opacity: 0; transform: translateX(-20px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+@keyframes pulseGlow {
+  0%, 100% { box-shadow: 0 0 8px rgba(239, 68, 68, 0.3); }
+  50% { box-shadow: 0 0 20px rgba(239, 68, 68, 0.6); }
+}
+@keyframes borderPulse {
+  0%, 100% { border-color: rgba(220, 38, 38, 0.15); }
+  50% { border-color: rgba(220, 38, 38, 0.35); }
+}
+@keyframes subtleFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-2px); }
+}
+@keyframes shimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.92); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: var(--bg-main);
+  /* Subtle red radial ambient glow */
+  background-image: 
+    radial-gradient(ellipse 80% 50% at 50% 0%, rgba(220, 38, 38, 0.06) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 40% at 80% 100%, rgba(249, 115, 22, 0.04) 0%, transparent 50%);
+  background-attachment: fixed;
+}
+
+#root {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-main);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--red-blood);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--red-deep);
+}
+
+/* Selection color */
+::selection {
+  background: rgba(220, 38, 38, 0.4);
+  color: #fff;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+  color: inherit;
+  font-family: inherit;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+input {
+  background: rgba(220, 38, 38, 0.05);
+  border: 1px solid rgba(220, 38, 38, 0.12);
+  color: white;
+  padding: 6px 12px;
+  border-radius: 6px;
+  outline: none;
+  transition: all 0.3s ease;
+}
+input:focus {
+  border-color: var(--red-hot);
+  box-shadow: 0 0 12px rgba(239, 68, 68, 0.2);
+}
+
+.glass-modal {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(8, 4, 8, 0.9);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+  animation: fadeIn 0.3s ease;
+}
+.modal-content {
+  background: linear-gradient(145deg, #10080e, #1a0e18);
+  border: 1px solid rgba(220, 38, 38, 0.2);
+  padding: 24px;
+  border-radius: 16px;
+  width: 400px;
+  max-width: 90vw;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8), 0 0 40px rgba(220, 38, 38, 0.1);
+  animation: scaleIn 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}

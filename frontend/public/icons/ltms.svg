@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs>
+    <linearGradient id="bl1" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0%" stop-color="#8A9AAA"/>
+      <stop offset="40%" stop-color="#C8D4E0"/>
+      <stop offset="100%" stop-color="#E8EEF4"/>
+    </linearGradient>
+    <linearGradient id="bl2" x1="1" y1="1" x2="0" y2="0">
+      <stop offset="0%" stop-color="#8A9AAA"/>
+      <stop offset="40%" stop-color="#C8D4E0"/>
+      <stop offset="100%" stop-color="#E8EEF4"/>
+    </linearGradient>
+  </defs>
+  <!-- Sword 1 blade (bottom-left to top-right) -->
+  <rect x="26" y="4" width="6" height="38" rx="2" fill="url(#bl1)" transform="rotate(45 32 32)"/>
+  <!-- Sword 1 guard -->
+  <rect x="22" y="38" width="14" height="5" rx="2" fill="#5A6A7A" transform="rotate(45 32 32)"/>
+  <!-- Sword 1 handle -->
+  <rect x="27" y="43" width="4" height="10" rx="1.5" fill="#4A3A2A" transform="rotate(45 32 32)"/>
+  <!-- Sword 1 pommel -->
+  <circle cx="29" cy="55" r="3" fill="#6A5A4A" transform="rotate(45 32 32)"/>
+  <!-- Sword 2 blade (bottom-right to top-left) -->
+  <rect x="32" y="4" width="6" height="38" rx="2" fill="url(#bl2)" transform="rotate(-45 32 32)"/>
+  <!-- Sword 2 guard -->
+  <rect x="28" y="38" width="14" height="5" rx="2" fill="#5A6A7A" transform="rotate(-45 32 32)"/>
+  <!-- Sword 2 handle -->
+  <rect x="33" y="43" width="4" height="10" rx="1.5" fill="#4A3A2A" transform="rotate(-45 32 32)"/>
+  <!-- Sword 2 pommel -->
+  <circle cx="35" cy="55" r="3" fill="#6A5A4A" transform="rotate(-45 32 32)"/>
+</svg>

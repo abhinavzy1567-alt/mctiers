@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <!-- Trophy cup -->
+  <defs>
+    <linearGradient id="tg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#FFD700"/>
+      <stop offset="50%" stop-color="#F5A623"/>
+      <stop offset="100%" stop-color="#D4880F"/>
+    </linearGradient>
+  </defs>
+  <!-- Cup body -->
+  <path d="M18,12 h28 v4 c0,14 -4,22 -14,26 c-10,-4 -14,-12 -14,-26 z" fill="url(#tg)" stroke="#B8860B" stroke-width="1.5"/>
+  <!-- Left handle -->
+  <path d="M18,16 C10,16 8,22 10,28 C12,32 16,30 18,28" fill="none" stroke="#D4A017" stroke-width="3.5" stroke-linecap="round"/>
+  <!-- Right handle -->
+  <path d="M46,16 C54,16 56,22 54,28 C52,32 48,30 46,28" fill="none" stroke="#D4A017" stroke-width="3.5" stroke-linecap="round"/>
+  <!-- Rim highlight -->
+  <rect x="18" y="11" width="28" height="4" rx="2" fill="#FFE44D"/>
+  <!-- Stem -->
+  <rect x="28" y="40" width="8" height="8" rx="1" fill="#D4A017"/>
+  <!-- Base -->
+  <rect x="22" y="48" width="20" height="5" rx="2.5" fill="#B8860B"/>
+  <rect x="22" y="48" width="20" height="2.5" rx="1.5" fill="#D4A017"/>
+  <!-- Star on cup -->
+  <polygon points="32,20 34,25 39,25 35,28 36,33 32,30 28,33 29,28 25,25 30,25" fill="#FFE44D" opacity="0.7"/>
+</svg>

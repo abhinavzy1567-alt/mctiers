@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs>
+    <linearGradient id="pg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.2"/>
+      <stop offset="100%" stop-color="#E8366A"/>
+    </linearGradient>
+  </defs>
+  <!-- Flask body (round bottom) -->
+  <circle cx="32" cy="40" r="18" fill="#2A2A3E" stroke="#D0D0E8" stroke-width="2.5"/>
+  <!-- Liquid fill -->
+  <path d="M16,46 C16,46 18,56 32,56 C46,56 48,46 48,46 L48,42 C48,42 46,36 32,36 C18,36 16,42 16,42Z" fill="#E8366A"/>
+  <!-- Liquid surface highlight -->
+  <ellipse cx="32" cy="38" rx="14" ry="3" fill="#FF6090" opacity="0.5"/>
+  <!-- Flask neck -->
+  <rect x="27" y="14" width="10" height="12" rx="2" fill="#2A2A3E" stroke="#D0D0E8" stroke-width="2.5"/>
+  <!-- Cork -->
+  <rect x="26" y="10" width="12" height="6" rx="3" fill="#8B6F47" stroke="#6B4F27" stroke-width="1"/>
+  <!-- Glass highlight -->
+  <ellipse cx="22" cy="36" rx="3" ry="8" fill="white" opacity="0.15" transform="rotate(-15 22 36)"/>
+  <!-- Bubbles -->
+  <circle cx="28" cy="46" r="2" fill="#FF8098" opacity="0.5"/>
+  <circle cx="36" cy="50" r="1.5" fill="#FF8098" opacity="0.4"/>
+  <circle cx="32" cy="44" r="1" fill="#FFA0B0" opacity="0.6"/>
+</svg>

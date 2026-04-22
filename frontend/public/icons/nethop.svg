@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs>
+    <radialGradient id="eg" cx="35%" cy="30%">
+      <stop offset="0%" stop-color="#50E8B0"/>
+      <stop offset="40%" stop-color="#1AAA7A"/>
+      <stop offset="70%" stop-color="#0D6B50"/>
+      <stop offset="100%" stop-color="#064030"/>
+    </radialGradient>
+  </defs>
+  <!-- Main sphere -->
+  <circle cx="32" cy="32" r="26" fill="url(#eg)"/>
+  <!-- Left eye/reflection -->
+  <ellipse cx="22" cy="28" rx="5" ry="10" fill="#40D8A0" opacity="0.6" transform="rotate(-20 22 28)"/>
+  <!-- Right eye/reflection -->
+  <ellipse cx="42" cy="36" rx="4" ry="8" fill="#40D8A0" opacity="0.4" transform="rotate(20 42 36)"/>
+  <!-- Top highlight -->
+  <ellipse cx="26" cy="18" rx="8" ry="4" fill="white" opacity="0.2" transform="rotate(-30 26 18)"/>
+  <!-- Dark center pupil effect -->
+  <circle cx="32" cy="32" r="10" fill="#064030" opacity="0.3"/>
+  <!-- Subtle ring pattern -->
+  <circle cx="32" cy="32" r="16" fill="none" stroke="#0D6B50" stroke-width="1" opacity="0.4"/>
+  <circle cx="32" cy="32" r="20" fill="none" stroke="#0D6B50" stroke-width="0.5" opacity="0.3"/>
+</svg>

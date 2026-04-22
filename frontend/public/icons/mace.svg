@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs>
+    <linearGradient id="mg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#6A6080"/>
+      <stop offset="100%" stop-color="#3A3050"/>
+    </linearGradient>
+  </defs>
+  <!-- Handle -->
+  <path d="M10,56 L30,36 L34,40 L14,60 Z" fill="#9A8ABB"/>
+  <line x1="16" y1="52" x2="20" y2="48" stroke="#7A6A9B" stroke-width="1.5"/>
+  <line x1="18" y1="54" x2="22" y2="50" stroke="#7A6A9B" stroke-width="1.5"/>
+  <line x1="20" y1="56" x2="24" y2="52" stroke="#7A6A9B" stroke-width="1.5"/>
+  <!-- Mace head (squared) -->
+  <rect x="26" y="8" width="24" height="24" rx="4" fill="url(#mg)" stroke="#2A2040" stroke-width="1.5" transform="rotate(-45 38 20)"/>
+  <!-- Inner face detail -->
+  <rect x="30" y="12" width="16" height="16" rx="2" fill="#4A4060" transform="rotate(-45 38 20)"/>
+  <!-- Face cross pattern -->
+  <line x1="38" y1="10" x2="38" y2="30" stroke="#5A5070" stroke-width="2" transform="rotate(-45 38 20)"/>
+  <line x1="28" y1="20" x2="48" y2="20" stroke="#5A5070" stroke-width="2" transform="rotate(-45 38 20)"/>
+  <!-- Top spike -->
+  <rect x="36" y="2" width="4" height="8" rx="1" fill="#5A5070" transform="rotate(-45 38 6)"/>
+  <!-- Metal sheen -->
+  <path d="M32,12 L36,8 L40,12 L36,16 Z" fill="#8A80A0" opacity="0.3" transform="rotate(-45 38 20)"/>
+</svg>

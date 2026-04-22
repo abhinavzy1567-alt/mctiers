@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs>
+    <linearGradient id="ag" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#A0D0F0"/>
+      <stop offset="100%" stop-color="#6090C0"/>
+    </linearGradient>
+  </defs>
+  <!-- Handle -->
+  <path d="M10,54 L28,36 L32,40 L14,58 Z" fill="#7A6A5A"/>
+  <line x1="16" y1="50" x2="20" y2="46" stroke="#5A4A3A" stroke-width="1.5"/>
+  <line x1="18" y1="52" x2="22" y2="48" stroke="#5A4A3A" stroke-width="1.5"/>
+  <!-- Axe head -->
+  <path d="M28,36 L32,40 L48,24 C54,18 54,10 48,8 C42,6 36,10 32,16 Z" fill="url(#ag)" stroke="#5080A0" stroke-width="1.5"/>
+  <!-- Axe head back spike -->
+  <path d="M28,36 L24,28 L32,16 Z" fill="#80B0D8"/>
+  <!-- Edge highlight -->
+  <path d="M48,24 C54,18 54,10 48,8 L46,12 C50,14 50,18 46,22 Z" fill="#C0E0FF" opacity="0.4"/>
+  <!-- Axe edge line -->
+  <path d="M48,8 C54,10 54,18 48,24" fill="none" stroke="#4070A0" stroke-width="2" stroke-linecap="round"/>
+</svg>

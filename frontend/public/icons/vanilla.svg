@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs>
+    <radialGradient id="vg" cx="40%" cy="35%">
+      <stop offset="0%" stop-color="#E060F0"/>
+      <stop offset="60%" stop-color="#B030D0"/>
+      <stop offset="100%" stop-color="#8020A0"/>
+    </radialGradient>
+  </defs>
+  <!-- Prongs (connectors) -->
+  <line x1="32" y1="10" x2="32" y2="20" stroke="#A0A0D0" stroke-width="5" stroke-linecap="round"/>
+  <line x1="14" y1="38" x2="22" y2="34" stroke="#A0A0D0" stroke-width="5" stroke-linecap="round"/>
+  <line x1="50" y1="38" x2="42" y2="34" stroke="#A0A0D0" stroke-width="5" stroke-linecap="round"/>
+  <line x1="24" y1="54" x2="28" y2="46" stroke="#A0A0D0" stroke-width="5" stroke-linecap="round"/>
+  <!-- Prong endpoints -->
+  <circle cx="32" cy="9" r="4" fill="#B0B0E0"/>
+  <circle cx="13" cy="40" r="4" fill="#B0B0E0"/>
+  <circle cx="51" cy="40" r="4" fill="#B0B0E0"/>
+  <circle cx="23" cy="56" r="4" fill="#B0B0E0"/>
+  <!-- Main hexagonal gem -->
+  <polygon points="32,18 44,26 44,40 32,48 20,40 20,26" fill="url(#vg)" stroke="#9020B0" stroke-width="2"/>
+  <!-- Highlight facet -->
+  <polygon points="32,20 42,27 38,26 32,22" fill="#F080FF" opacity="0.5"/>
+  <polygon points="22,28 32,22 30,30 22,34" fill="#D060F0" opacity="0.3"/>
+</svg>
