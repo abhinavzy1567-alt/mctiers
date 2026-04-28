@@ -22,11 +22,13 @@ export interface Badge {
 }
 
 export interface RankedPlayer extends Player {
+  player_id?: number;
   ranking_id?: number;
   gamemode_id?: number;
   tier_id?: number | null;
   points: number;
   retired?: number;
+  order_index?: number;
   winrate?: number;
   ping?: number;
   notes?: string;

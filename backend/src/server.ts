@@ -202,7 +202,7 @@ app.patch('/api/rankings/:playerId', requireAuth, async (req, res) => {
 });
 
 // Catch-all: serve frontend for any non-API route (SPA support)
-app.get('*', (req, res) => {
+app.get('*splat', (req, res) => {
   res.sendFile(path.join(frontendDist, 'index.html'));
 });
 
