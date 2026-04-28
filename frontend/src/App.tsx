@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef, useCallback } from 'react';
 import type { GameMode, RankedPlayer, Tier } from './types';
 import { LeaderboardRow } from './LeaderboardRow';
 import * as Icons from 'lucide-react';
@@ -26,6 +26,11 @@ function App() {
   const [password, setPassword] = useState('');
   
   const [newPlayerName, setNewPlayerName] = useState('');
+
+  // Google Sign-In state
+  const [googleClientId, setGoogleClientId] = useState<string | null>(null);
+  const [googleUser, setGoogleUser] = useState<{ name: string; picture: string; email: string } | null>(null);
+  const googleBtnRef = useRef<HTMLDivElement>(null);
 
   const getPointsForTier = (tierName: string) => {
     const map: any = {
@@ -101,6 +106,60 @@ function App() {
       }
     } catch (err) { console.error(err); }
   };
+
+  // Google Sign-In callback
+  const handleGoogleResponse = useCallback(async (response: any) => {
+    try {
+      const resp = await fetch(`${API_BASE}/auth/google`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ credential: response.credential })
+      });
+      const data = await resp.json();
+      if (data.token) {
+        setToken(data.token);
+        localStorage.setItem('adminToken', data.token);
+        setGoogleUser(data.user || null);
+        setShowLogin(false);
+      } else {
+        alert(data.error || 'Google login failed');
+      }
+    } catch (err) { console.error(err); }
+  }, []);
+
+  // Fetch Google Client ID from backend
+  useEffect(() => {
+    fetch(`${API_BASE}/auth/config`)
+      .then(r => r.json())
+      .then(data => setGoogleClientId(data.googleClientId || null))
+      .catch(() => {});
+  }, []);
+
+  // Load Google Identity Services SDK
+  useEffect(() => {
+    if (!googleClientId || token) return;
+    const initGoogle = () => {
+      if ((window as any).google?.accounts?.id && googleBtnRef.current) {
+        (window as any).google.accounts.id.initialize({
+          client_id: googleClientId,
+          callback: handleGoogleResponse,
+        });
+        (window as any).google.accounts.id.renderButton(
+          googleBtnRef.current,
+          { theme: 'filled_black', size: 'large', width: 248, text: 'signin_with', shape: 'pill' }
+        );
+      }
+    };
+    const existing = document.getElementById('google-gsi-script');
+    if (existing) { initGoogle(); return; }
+    const script = document.createElement('script');
+    script.id = 'google-gsi-script';
+    script.src = 'https://accounts.google.com/gsi/client';
+    script.async = true;
+    script.defer = true;
+    script.onload = initGoogle;
+    document.body.appendChild(script);
+  }, [googleClientId, token, showLogin, handleGoogleResponse]);
 
   const handleLogout = () => {
     setToken(null);
@@ -279,7 +338,18 @@ function App() {
                 <div style={{position: 'relative'}}>
                   <div className="nav-link" onClick={() => setShowLogin(!showLogin)}><Icons.Lock size={16}/> Admin</div>
                   {showLogin && (
-                    <div className="glass-modal" style={{position:'absolute', top: '100%', right:0, left:'auto', bottom:'auto', background:'var(--bg-panel)', padding:'1rem', borderRadius:'8px', zIndex:100, border:'1px solid var(--border-light)'}}>
+                    <div className="glass-modal" style={{position:'absolute', top: '100%', right:0, left:'auto', bottom:'auto', background:'var(--bg-panel)', padding:'1rem', borderRadius:'12px', zIndex:100, border:'1px solid var(--border-light)', minWidth:'280px'}}>
+                       {/* Google Sign-In button */}
+                       {googleClientId && (
+                         <>
+                           <div ref={googleBtnRef} style={{display:'flex', justifyContent:'center', marginBottom:'12px'}}></div>
+                           <div style={{display:'flex', alignItems:'center', gap:'8px', margin:'8px 0', opacity:0.5}}>
+                             <div style={{flex:1, height:'1px', background:'rgba(255,255,255,0.3)'}} />
+                             <span style={{fontSize:'0.7rem', textTransform:'uppercase', letterSpacing:'1px'}}>or</span>
+                             <div style={{flex:1, height:'1px', background:'rgba(255,255,255,0.3)'}} />
+                           </div>
+                         </>
+                       )}
                        <form onSubmit={handleLogin} style={{display:'flex', flexDirection:'column', gap:'8px'}}>
                           <input placeholder="Username" value={username} onChange={e=>setUsername(e.target.value)} />
                           <input type="password" placeholder="Password" value={password} onChange={e=>setPassword(e.target.value)} />
@@ -289,7 +359,10 @@ function App() {
                   )}
                 </div>
              ) : (
-                <div className="nav-link" onClick={handleLogout}><Icons.Unlock size={16}/> Logout</div>
+                <div style={{display:'flex', alignItems:'center', gap:'8px'}}>
+                  {googleUser?.picture && <img src={googleUser.picture} alt="" style={{width:24, height:24, borderRadius:'50%', border:'2px solid rgba(255,50,50,0.6)'}} />}
+                  <div className="nav-link" onClick={handleLogout}><Icons.Unlock size={16}/> Logout</div>
+                </div>
              )}
           </div>
 
