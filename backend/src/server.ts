@@ -1,6 +1,7 @@
 import express from 'express';
 import cors from 'cors';
 import path from 'path';
+import { OAuth2Client } from 'google-auth-library';
 import { dbQuery, dbRun } from './db';
 
 const app = express();
@@ -15,18 +16,70 @@ app.use(express.static(frontendDist));
 
 const ADMIN_USERNAME = process.env.ADMIN_USERNAME || 'admin';
 const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || 'password123';
+const GOOGLE_CLIENT_ID = process.env.GOOGLE_CLIENT_ID || '';
+const ADMIN_EMAIL = process.env.ADMIN_EMAIL || ''; // Google email allowed as admin
+const googleClient = GOOGLE_CLIENT_ID ? new OAuth2Client(GOOGLE_CLIENT_ID) : null;
 
+// Simple session store (in-memory)
+const validTokens = new Set<string>();
+validTokens.add('fake-jwt-token'); // keep old token working
+
+function generateToken(): string {
+  return 'gauth-' + Math.random().toString(36).substring(2) + Date.now().toString(36);
+}
+
+// Legacy username/password login
 app.post('/api/login', (req, res) => {
   const { username, password } = req.body;
   if (username === ADMIN_USERNAME && password === ADMIN_PASSWORD) {
-    res.json({ success: true, token: 'fake-jwt-token' });
+    const token = generateToken();
+    validTokens.add(token);
+    res.json({ success: true, token });
   } else {
     res.status(401).json({ error: 'Invalid credentials' });
   }
 });
 
+// Google Sign-In login
+app.post('/api/auth/google', async (req, res) => {
+  const { credential } = req.body;
+  if (!googleClient || !GOOGLE_CLIENT_ID) {
+    return res.status(400).json({ error: 'Google login is not configured on this server' });
+  }
+  try {
+    const ticket = await googleClient.verifyIdToken({
+      idToken: credential,
+      audience: GOOGLE_CLIENT_ID,
+    });
+    const payload = ticket.getPayload();
+    if (!payload || !payload.email) {
+      return res.status(401).json({ error: 'Invalid Google token' });
+    }
+    // Check if this email is the admin
+    if (payload.email.toLowerCase() !== ADMIN_EMAIL.toLowerCase()) {
+      return res.status(403).json({ error: `Email ${payload.email} is not authorized as admin` });
+    }
+    const token = generateToken();
+    validTokens.add(token);
+    res.json({
+      success: true,
+      token,
+      user: { email: payload.email, name: payload.name, picture: payload.picture }
+    });
+  } catch (err: any) {
+    res.status(401).json({ error: 'Google verification failed: ' + err.message });
+  }
+});
+
+// Returns the Google Client ID so the frontend knows how to render the button
+app.get('/api/auth/config', (req, res) => {
+  res.json({ googleClientId: GOOGLE_CLIENT_ID || null });
+});
+
 const requireAuth = (req: any, res: any, next: any) => {
-  if (req.headers.authorization === 'Bearer fake-jwt-token') {
+  const authHeader = req.headers.authorization || '';
+  const token = authHeader.replace('Bearer ', '');
+  if (validTokens.has(token)) {
     next();
   } else {
     res.status(401).json({ error: 'Unauthorized' });
